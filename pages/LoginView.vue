@@ -138,9 +138,9 @@ export default {
         const priv = await this.$http
           .get("/permission/privilege")
           .then((response) => response.data);
-        // localStorage.setItem("priv", priv.data);
-        // console.log(priv)
-        this.$router.push("/welcome");
+        localStorage.setItem("priv", priv.data);
+        console.log(priv)
+        this.$router.push("/posts");
         console.log("BISA ANJING")
         // window.location.reload("/test")
       } catch (error) {

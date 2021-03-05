@@ -3,25 +3,9 @@ var axios = require('axios');
 var app = express();
 var api = "http://13.228.194.85:8181/v1";
 
-app.post('/auth', function (req, res) {
-  console.log("KENA GA SI BNGSAT LAAAAHAHHHHHHHHHHHHHHHHH")
-const { email, password } = req.body
-  axios.post(api + '/auth', {
-    email,
-    password
-  }).then(response => {
-    console.log(response.data.data.token)
-    res.send(response.data);
-  }).catch(error => {
-    console.log(error)
-  })
-})
-
 // app.post('/auth', function (req, res) {
-//   const sess = req.session;
-//   const { email, password } = req.body
-//   sess.email = email
-//   sess.password = password
+//   console.log("KENA GA SI BNGSAT LAAAAHAHHHHHHHHHHHHHHHHH")
+// const { email, password } = req.body
 //   axios.post(api + '/auth', {
 //     email,
 //     password
@@ -32,6 +16,22 @@ const { email, password } = req.body
 //     console.log(error)
 //   })
 // })
+
+app.post('/auth', function (req, res) {
+  const sess = req.session;
+  const { email, password } = req.body
+  sess.email = email
+  sess.password = password
+  axios.post(api + '/auth', {
+    email,
+    password
+  }).then(response => {
+    console.log(response.data.data.token)
+    res.send(response.data);
+  }).catch(error => {
+    console.log(error)
+  })
+})
 
 app.get('/inventory/uom', function (req, res) {
   axios.get(api + '/inventory/uom')

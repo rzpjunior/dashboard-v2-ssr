@@ -13,20 +13,17 @@ const getDefaultState = () => {
   };
 };
 
+const plugins = []
+
+if (process.browser) {
+  plugins.push(createPersistedState)
+}
+
 export default new Vuex.Store({
-    state: getDefaultState(),
-    plugins: [
-      createPersistedState({
-        storage: {
-          getItem: (key) => Cookies.get(key),
-          // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.
-          setItem: (key, value) =>
-            Cookies.set(key, value, { expires: 3, secure: true }),
-          removeItem: (key) => Cookies.remove(key),
-        },
-      }),
-    ],
-    getters: {
+  strict: true,
+  plugins: plugins,
+  state: getDefaultState(),
+  getters: {
       isLoggedIn: state => {
           return state.token;
       },

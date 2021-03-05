@@ -23,6 +23,7 @@ export function createRouter () {
       scrollBehavior: () => ({ y: 0 }),
       routes: [
         route('/', 'Login'),
+        route('/posts', 'Posts'),
         route('/welcome', 'Welcome'),
         route('/inspire', 'Inspire'),
         // Global redirect for 404
