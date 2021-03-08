@@ -1,6 +1,6 @@
-# Vuetify Webpack SSR Template
+# Dashboard V2 SSR
 
-> Vuetify SSR Webpack Template
+> Dashboard V2 SSR
 
 ## Build Setup
 
@@ -12,8 +12,5 @@ cd webpack-ssr
 # npm
 npm install
 
-# yarn
-yarn
 ```
 
-For additional information, please visit the [Official Documentation](https://vuetifyjs.com).
