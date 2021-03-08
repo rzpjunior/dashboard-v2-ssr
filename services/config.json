@@ -1,0 +1,5 @@
+{
+    "redisHost": "ec2-54-254-254-225.ap-southeast-1.compute.amazonaws.com",
+    "redisPort": "6379",
+    "redisAuthPass": "edenfarm.123"
+}

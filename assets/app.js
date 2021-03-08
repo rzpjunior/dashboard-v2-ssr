@@ -3,6 +3,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 import App from './App.vue'
 import Components from 'components/_index'
+import VueLocalStorage from 'vue-localstorage'
 
 // import { createStore } from 'store/index'
 import store from '../store/index'
@@ -13,8 +14,30 @@ import { sync } from 'vuex-router-sync'
 Vue.use(Vuetify)
 Vue.use(http)
 
+
+Vue.use(VueLocalStorage)
+Vue.use(VueLocalStorage, {
+  name: 'asd',
+  bind: true //created computed members from your variable declarations
+})
+
 Object.keys(Components).forEach(key => {
   Vue.component(key, Components[key])
+})
+
+Vue.directive('privilege', {
+  inserted: function (el, binding, vnode) {
+      let priv = localStorage.getItem('priv')
+      let superAdmin = store.getters.getStaff
+      if(superAdmin.user.email !== 'superadmin'){
+          if (typeof binding.value !== 'undefined') {
+              if (priv.indexOf(binding.value) < 0) {
+                  vnode.elm.parentElement.removeChild(vnode.elm)
+              }
+              console.log(vnode)
+          }
+      }
+  }
 })
 
 // Expose a factory function that creates a fresh set of store, router,

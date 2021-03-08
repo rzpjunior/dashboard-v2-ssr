@@ -12,14 +12,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var api = require('./modules/api.js');
 var token = 'test'
+var config = require("./services/config.json");
 
 const session = require('express-session');
 const redis = require('redis');
 const redisClient = redis.createClient({
-    host: "ec2-54-254-254-225.ap-southeast-1.compute.amazonaws.com",
-    port: 6379,
+    host: config.redisHost,
+    port: config.redisPort,
     no_ready_check: true,
-    auth_pass: 'edenfarm.123'
+    auth_pass: config.redisAuthPass
   });
 const redisStore = require('connect-redis')(session);
 

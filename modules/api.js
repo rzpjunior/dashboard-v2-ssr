@@ -2,6 +2,7 @@ var express = require('express');
 var axios = require('axios');
 var app = express();
 var api = "http://13.228.194.85:8181/v1";
+var cookieParser = require('cookie-parser');
 
 // app.post('/auth', function (req, res) {
 //   console.log("KENA GA SI BNGSAT LAAAAHAHHHHHHHHHHHHHHHHH")
@@ -17,16 +18,22 @@ var api = "http://13.228.194.85:8181/v1";
 //   })
 // })
 
+app.use(cookieParser());
+
 app.post('/auth', function (req, res) {
   const sess = req.session;
   const { email, password } = req.body
   sess.email = email
   sess.password = password
+  var cookie = req.cookies.token;
   axios.post(api + '/auth', {
     email,
     password
   }).then(response => {
-    console.log(response.data.data.token)
+    const token = response.data.data.token;
+    const staff = response.data.data.staff;
+    res.cookie('token', token, { maxAge: 900000, httpOnly: true });
+    console.log(token, "ALAMALAMALAMALAMALAMALAM")
     res.send(response.data);
   }).catch(error => {
     console.log(error)
