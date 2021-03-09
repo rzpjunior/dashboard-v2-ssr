@@ -51,6 +51,8 @@ function createRenderer (bundle, options) {
   }))
 }
 
+const token = require(api.token)
+
 let renderer
 let readyPromise
 if (isProd) {

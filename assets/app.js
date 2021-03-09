@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
+import './custom/main.css'
 import App from './App.vue'
 import Components from 'components/_index'
 import VueLocalStorage from 'vue-localstorage'

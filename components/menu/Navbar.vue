@@ -4,7 +4,7 @@
             <div class="pt-5"/>
             <v-list class="Heiti fs13">
                 <v-list-item>
-                    <img src="/img/eden-logo.png" width="80%" height="80%" class="pl-md-4">
+                    <img src="../../assets/img/eden-logo.png" width="80%" height="80%" class="pl-md-4">
                 </v-list-item>
                 <div class="pt-6"/>
                 <v-list-item color="#4ABFB2" to="/Home">
@@ -338,7 +338,6 @@
         methods: {
             signoutButtonPressed() {
                 this.$store.dispatch('logout');
-                localStorage.removeItem('priv')
                 this.$router.push({ name: "LoginView" });
             },
             darkMode(){

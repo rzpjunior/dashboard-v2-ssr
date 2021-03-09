@@ -2,7 +2,7 @@
   <div>
     <v-app
       :style="{
-        'background-image': 'url(/img/bg_login.png)',
+        'background-image': 'url(../assets/img/bg_login.png)',
         'background-position': 'center',
         'background-size': 'cover',
         'background-repeat': 'no-repeat',
@@ -13,7 +13,7 @@
       <v-main>
         <v-flex pb-3 class="text-xs-center pb-4" style="margin-top: 114px">
           <div class="text-center pb-4">
-            <img src="/img/logo_login.png" />
+            <img src="../assets/img/logo_login.png" />
           </div>
         </v-flex>
         <div style="height:8px"/>
